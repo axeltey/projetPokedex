@@ -6,6 +6,7 @@ import ListPokemonScreen from '../screen/listPokemon/listPokemonScreen'
 import LoadingScreen from '../screen/loading/LoadingScreen'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-native'
+import LogoutButton from '../components/logout/logout'
 
 const TabNavigator = createBottomTabNavigator()
 
@@ -25,13 +26,14 @@ const AuthNavigator = () => {
 
 const MainNavigator = () => {
   return (
-    <TabNavigator.Navigator>
+    <TabNavigator.Navigator screenOptions={{
+      headerRight: () => (
+        <LogoutButton />
+      )
+    }}
+    >
       <TabNavigator.Screen
-        name='Pokemons' component={ListPokemonScreen} options={{
-          headerRight: () => (
-            <Button title='but' onPress={() => {}} />
-          )
-        }}
+        name='Pokemons' component={ListPokemonScreen}
       />
     </TabNavigator.Navigator>
   )
