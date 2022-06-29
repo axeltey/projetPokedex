@@ -7,6 +7,7 @@ import LoadingScreen from '../screen/loading/LoadingScreen'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-native'
 import LogoutButton from '../components/logout/logout'
+import PokemonDetails from '../screen/pokemon/pokemon_detail'
 
 const TabNavigator = createBottomTabNavigator()
 
@@ -34,6 +35,9 @@ const MainNavigator = () => {
     >
       <TabNavigator.Screen
         name='Pokemons' component={ListPokemonScreen}
+      />
+      <TabNavigator.Screen
+        name='Pokemon' component={PokemonDetails}
       />
     </TabNavigator.Navigator>
   )

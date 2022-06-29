@@ -9,5 +9,14 @@ const api = axios.create({
   timeout: 10000
 })
 
+const getPokemons = async (id) => {
+  try {
+    const response = await api.get(`/restaurants/${id}`)
+    return response.data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export {
 }
