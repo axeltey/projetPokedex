@@ -1,0 +1,10 @@
+{"profiles":[
+    {
+        "username":"admin",
+        "password":"superadminpassword"
+    },
+    {
+        "username":"user",
+        "password":"userpassword"
+    }
+]}
