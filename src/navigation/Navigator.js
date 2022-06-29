@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ListPokemonScreen from '../screen/listPokemon/listPokemonScreen'
 import LoadingScreen from '../screen/loading/LoadingScreen'
 import { useAuth } from '../contexts/AuthContext'
+import { Button } from 'react-native'
 
 const TabNavigator = createBottomTabNavigator()
 
@@ -26,7 +27,11 @@ const MainNavigator = () => {
   return (
     <TabNavigator.Navigator>
       <TabNavigator.Screen
-        name='Pokemons' component={ListPokemonScreen}
+        name='Pokemons' component={ListPokemonScreen} options={{
+          headerRight: () => (
+            <Button title='but' onPress={() => {}} />
+          )
+        }}
       />
     </TabNavigator.Navigator>
   )
