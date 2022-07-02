@@ -2,12 +2,11 @@ import React from 'react'
 import AuthScreen from '../screen/auth/AuthScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import ListPokemonScreen from '../screen/listPokemon/listPokemonScreen'
+import ListPokemonScreen from '../screen/listPokemon/ListPokemonScreen'
 import LoadingScreen from '../screen/loading/LoadingScreen'
 import { useAuth } from '../contexts/AuthContext'
-import { Button } from 'react-native'
-import LogoutButton from '../components/logout/logout'
-import PokemonDetails from '../screen/pokemon/pokemon_detail'
+import LogoutButton from '../components/logout/Logout'
+import PokemonScreen from '../screen/pokemon/PokemonScreen'
 
 const TabNavigator = createBottomTabNavigator()
 
@@ -37,7 +36,7 @@ const MainNavigator = () => {
         name='Pokemons' component={ListPokemonScreen}
       />
       <TabNavigator.Screen
-        name='Pokemon' component={PokemonDetails}
+        name='Pokemon' component={PokemonScreen}
       />
     </TabNavigator.Navigator>
   )

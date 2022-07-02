@@ -9,9 +9,18 @@ const api = axios.create({
   timeout: 10000
 })
 
-const getPokemons = async (id) => {
+const getPokemons = async (offset, limit) => {
   try {
-    const response = await api.get(`/restaurants/${id}`)
+    const response = await api.get(`/pokemon/?offset=${offset}&limit=${limit}`)
+    return response.data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getPokemon = async (name) => {
+  try {
+    const response = await api.get(`/pokemon/${name}`)
     return response.data
   } catch (error) {
     console.error(error)
@@ -19,4 +28,6 @@ const getPokemons = async (id) => {
 }
 
 export {
+  getPokemons,
+  getPokemon
 }
