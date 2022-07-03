@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
 import ListPokemons from '../../components/pokemons/ListPokemons'
-import { getPokemons } from '../../services/API'
+import { getGeneration } from '../../services/API'
 
-function ListPokemonScreen () {
+function ListPokemonScreen ({ generation }) {
   const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await getPokemons(0, 151)
+    const getData = async (generation) => {
+      const data = await getGeneration(generation.split('/')[6])
+      const temp = data.pokemon_species.sort((a, b) => parseInt(a.url.split('/')[6]) - parseInt(b.url.split('/')[6]))
+      console.log(temp)
       setPokemons(data)
     }
-    getData()
+    getData(generation)
   }, [])
 
   if (!pokemons) {
@@ -23,7 +25,7 @@ function ListPokemonScreen () {
   }
   return (
     <View>
-      <ListPokemons pokemons={pokemons.results} />
+      <ListPokemons pokemons={pokemons.pokemon_species} />
     </View>
   )
 }

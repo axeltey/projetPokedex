@@ -27,7 +27,27 @@ const getPokemon = async (name) => {
   }
 }
 
+const getGenerations = async () => {
+  try {
+    const response = await api.get('/generation/')
+    return response.data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getGeneration = async (id) => {
+  try {
+    const response = await api.get(`/generation/${id}`)
+    return response.data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export {
   getPokemons,
-  getPokemon
+  getPokemon,
+  getGenerations,
+  getGeneration
 }

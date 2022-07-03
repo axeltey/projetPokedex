@@ -1,19 +1,19 @@
 import React from 'react'
 import { FlatList } from 'react-native'
-import PokemonItem from './PokemonItem'
+import GenerationItem from './GenerationItem'
 
-function ListPokemons ({ pokemons }) {
+function GenerationList ({ generations }) {
   const renderItem = ({ item }) => (
-    <PokemonItem pokemon={item} />
+    <GenerationItem generation={item} />
   )
 
   return (
     <FlatList
-      data={pokemons}
+      data={generations}
       renderItem={renderItem}
       keyExtractor={item => item.url.split('/')[6]}
     />
   )
 }
 
-export default ListPokemons
+export default GenerationList

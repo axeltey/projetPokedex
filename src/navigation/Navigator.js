@@ -7,6 +7,7 @@ import LoadingScreen from '../screen/loading/LoadingScreen'
 import { useAuth } from '../contexts/AuthContext'
 import LogoutButton from '../components/logout/Logout'
 import PokemonScreen from '../screen/pokemon/PokemonScreen'
+import HomeScreen from '../screen/home/HomeScreen'
 
 const TabNavigator = createBottomTabNavigator()
 
@@ -32,6 +33,9 @@ const MainNavigator = () => {
       )
     }}
     >
+      <TabNavigator.Screen
+        name='Generations' component={HomeScreen}
+      />
       <TabNavigator.Screen
         name='Pokemons' component={ListPokemonScreen}
       />
