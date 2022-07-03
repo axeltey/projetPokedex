@@ -23,7 +23,7 @@ function HomeScreen () {
   }
   return (
     <View>
-      <GenerationList pokemons={generations.results} />
+      <GenerationList generations={generations.results} />
     </View>
   )
 }

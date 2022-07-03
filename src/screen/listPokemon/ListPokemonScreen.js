@@ -3,17 +3,17 @@ import { Text, View } from 'react-native'
 import ListPokemons from '../../components/pokemons/ListPokemons'
 import { getGeneration } from '../../services/API'
 
-function ListPokemonScreen ({ generation }) {
+function ListPokemonScreen ({ navigation, route }) {
   const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
     const getData = async (generation) => {
       const data = await getGeneration(generation.split('/')[6])
-      const temp = data.pokemon_species.sort((a, b) => parseInt(a.url.split('/')[6]) - parseInt(b.url.split('/')[6]))
-      console.log(temp)
+      // const temp = data.pokemon_species.sort((a, b) => parseInt(a.url.split('/')[6]) - parseInt(b.url.split('/')[6]))
+      // console.log(temp)
       setPokemons(data)
     }
-    getData(generation)
+    getData(route.params.generation)
   }, [])
 
   if (!pokemons) {
@@ -25,7 +25,7 @@ function ListPokemonScreen ({ generation }) {
   }
   return (
     <View>
-      <ListPokemons pokemons={pokemons.pokemon_species} />
+      <ListPokemons pokemons={pokemons.pokemon_species} state={this.state} />
     </View>
   )
 }
