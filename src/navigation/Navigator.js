@@ -35,20 +35,20 @@ const MainNavigator = () => {
   return (
     <TabNavigator.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, size }) => {
-        const iconSize = focused ? 30 : 25
+        const iconSize = focused ? 40 : 35
         switch (route.name) {
           case 'Home':
             return (
               <Image
                 source={Images.pikachuHome}
-                style={{ width: iconSize + 10, height: iconSize + 10 }}
+                style={{ width: iconSize, height: iconSize }}
               />
             )
           case 'Pokedex':
             return (
               <Image
                 source={Images.pokeball}
-                style={{ width: iconSize + 10, height: iconSize + 10 }}
+                style={{ width: iconSize, height: iconSize }}
               />
             )
           default:
