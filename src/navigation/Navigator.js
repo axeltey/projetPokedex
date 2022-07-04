@@ -7,11 +7,14 @@ import LoadingScreen from '../screen/loading/LoadingScreen'
 import { useAuth } from '../contexts/AuthContext'
 import LogoutButton from '../components/logout/Logout'
 import PokemonScreen from '../screen/pokemon/PokemonScreen'
+import GenerationsScreen from '../screen/generations/GenerationsScreen'
 import HomeScreen from '../screen/home/HomeScreen'
 
 const TabNavigator = createBottomTabNavigator()
 
 const AuthStackNavigator = createNativeStackNavigator()
+
+const PokemonStackNavigator = createNativeStackNavigator()
 
 const AuthNavigator = () => {
   return (
@@ -33,16 +36,30 @@ const MainNavigator = () => {
       )
     }}
     >
+      <TabNavigator.Screen name='Home' component={HomeScreen} />
       <TabNavigator.Screen
-        name='Generations' component={HomeScreen}
-      />
-      <TabNavigator.Screen
-        name='Pokemons' component={ListPokemonScreen}
-      />
-      <TabNavigator.Screen
-        name='Pokemon' component={PokemonScreen}
+        options={{
+          headerShown: false
+        }}
+        name='Pokedex' component={PokemonNavigator}
       />
     </TabNavigator.Navigator>
+  )
+}
+
+const PokemonNavigator = () => {
+  return (
+    <PokemonStackNavigator.Navigator
+      screenOptions={{
+        headerRight: () => (
+          <LogoutButton />
+        )
+      }}
+    >
+      <PokemonStackNavigator.Screen name='Generations' component={GenerationsScreen} />
+      <PokemonStackNavigator.Screen name='Pokemons' component={ListPokemonScreen} />
+      <PokemonStackNavigator.Screen name='Pokemon' component={PokemonScreen} />
+    </PokemonStackNavigator.Navigator>
   )
 }
 

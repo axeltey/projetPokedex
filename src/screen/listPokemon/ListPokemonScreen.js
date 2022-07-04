@@ -10,9 +10,8 @@ function ListPokemonScreen ({ navigation, route }) {
   useEffect(() => {
     const getData = async (generation) => {
       const data = await getGeneration(generation.split('/')[6])
-      // const temp = data.pokemon_species.sort((a, b) => parseInt(a.url.split('/')[6]) - parseInt(b.url.split('/')[6]))
-      // console.log(temp)
-      setPokemons(data)
+      const temp = data.pokemon_species.sort((a, b) => parseInt(a.url.split('/')[6]) - parseInt(b.url.split('/')[6]))
+      setPokemons(temp)
     }
     getData(generation)
   }, [generation])
@@ -26,7 +25,7 @@ function ListPokemonScreen ({ navigation, route }) {
   }
   return (
     <View>
-      <ListPokemons pokemons={pokemons.pokemon_species} />
+      <ListPokemons pokemons={pokemons} />
     </View>
   )
 }
