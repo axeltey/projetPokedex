@@ -11,10 +11,6 @@ function AuthForm () {
     password: 'userpassword'
   })
 
-  const updateAuth = async () => {
-    await loginUser(credentials)
-  }
-
   return (
     <View>
       <Text>Se connecter</Text>
@@ -35,7 +31,7 @@ function AuthForm () {
       />
       <Button
         title='Se connecter'
-        onPress={updateAuth}
+        onPress={() => loginUser(credentials)}
       />
     </View>
   )

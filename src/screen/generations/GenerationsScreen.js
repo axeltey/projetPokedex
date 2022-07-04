@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
-import GenerationList from '../../components/home/GenerationList'
+import GenerationList from '../../components/generation/GenerationList'
 import { getGenerations } from '../../services/API'
 
 function GenerationsScreen () {

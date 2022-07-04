@@ -1,6 +1,7 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 import PokemonItem from './PokemonItem'
+import Style from './style/PokeListStyle'
 
 function ListPokemons ({ pokemons }) {
   const renderItem = ({ item }) => (
@@ -9,6 +10,7 @@ function ListPokemons ({ pokemons }) {
 
   return (
     <FlatList
+      columnWrapperStyle={Style.list}
       data={pokemons}
       renderItem={renderItem}
       numColumns={2}

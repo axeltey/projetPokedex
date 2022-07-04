@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AuthScreen from '../screen/auth/AuthScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -9,8 +9,7 @@ import LogoutButton from '../components/logout/Logout'
 import PokemonScreen from '../screen/pokemon/PokemonScreen'
 import GenerationsScreen from '../screen/generations/GenerationsScreen'
 import HomeScreen from '../screen/home/HomeScreen'
-import { Image } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import { AppState, Image } from 'react-native'
 import Images from '../images/image'
 
 const TabNavigator = createBottomTabNavigator()
@@ -34,6 +33,9 @@ const AuthNavigator = () => {
 const MainNavigator = () => {
   return (
     <TabNavigator.Navigator screenOptions={({ route }) => ({
+      headerRight: () => (
+        <LogoutButton />
+      ),
       tabBarIcon: ({ focused, size }) => {
         const iconSize = focused ? 40 : 35
         switch (route.name) {
@@ -87,9 +89,21 @@ const PokemonNavigator = () => {
 }
 
 const RootNavigator = () => {
-  const { state: { loading, user } } = useAuth()
+  // useEffect(() => {
+  //   const appStateId = AppState.addEventListener('change', handleAppStateChange)
 
-  console.log(user)
+  //   return () => {
+  //     appStateId.remove()
+  //   }
+  // }, [AppState.currentState])
+
+  // const handleAppStateChange = async (nextAppState) => {
+  //   if (nextAppState === 'background') {
+  //     await logout()
+  //   }
+  // }
+
+  const { /* logout, */ state: { loading, user } } = useAuth()
 
   if (loading) {
     return <LoadingScreen />
