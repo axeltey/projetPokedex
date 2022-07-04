@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import PokemonItem from './PokemonItem'
 
-function ListPokemons ({ pokemons, state }) {
+function ListPokemons ({ pokemons }) {
   const renderItem = ({ item }) => (
     <PokemonItem pokemon={item} />
   )
@@ -10,7 +10,6 @@ function ListPokemons ({ pokemons, state }) {
   return (
     <FlatList
       data={pokemons}
-      extraData={state}
       renderItem={renderItem}
       keyExtractor={item => item.url.split('/')[6]}
     />

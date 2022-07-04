@@ -5,6 +5,7 @@ import { getGeneration } from '../../services/API'
 
 function ListPokemonScreen ({ navigation, route }) {
   const [pokemons, setPokemons] = useState([])
+  const { generation } = route.params
 
   useEffect(() => {
     const getData = async (generation) => {
@@ -13,8 +14,8 @@ function ListPokemonScreen ({ navigation, route }) {
       // console.log(temp)
       setPokemons(data)
     }
-    getData(route.params.generation)
-  }, [])
+    getData(generation)
+  }, [generation])
 
   if (!pokemons) {
     return (
@@ -25,7 +26,7 @@ function ListPokemonScreen ({ navigation, route }) {
   }
   return (
     <View>
-      <ListPokemons pokemons={pokemons.pokemon_species} state={this.state} />
+      <ListPokemons pokemons={pokemons.pokemon_species} />
     </View>
   )
 }
