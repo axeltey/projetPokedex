@@ -1,11 +1,16 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 import Style from './style/PokemonDetailsStyle'
+import Pinchable from 'react-native-pinchable'
+import PokemonImage from '../fastimage/PokemonImage'
 
 function PokemonDetails ({ pokemon }) {
   return (
     <View style={Style.container}>
-      <Image source={{ uri: pokemon.sprites.front_default }} style={Style.image} />
+      <Pinchable>
+        {/* <Image source={{ uri: pokemon.sprites.front_default }} style={Style.image} /> */}
+        <PokemonImage id={pokemon.id} width={200} height={200} />
+      </Pinchable>
     </View>
   )
 }

@@ -9,6 +9,9 @@ import LogoutButton from '../components/logout/Logout'
 import PokemonScreen from '../screen/pokemon/PokemonScreen'
 import GenerationsScreen from '../screen/generations/GenerationsScreen'
 import HomeScreen from '../screen/home/HomeScreen'
+import { Image } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import Images from '../images/image'
 
 const TabNavigator = createBottomTabNavigator()
 
@@ -30,11 +33,31 @@ const AuthNavigator = () => {
 
 const MainNavigator = () => {
   return (
-    <TabNavigator.Navigator screenOptions={{
-      headerRight: () => (
-        <LogoutButton />
-      )
-    }}
+    <TabNavigator.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, size }) => {
+        const iconSize = focused ? 30 : 25
+        switch (route.name) {
+          case 'Home':
+            return (
+              <Image
+                source={Images.pikachuHome}
+                style={{ width: iconSize + 10, height: iconSize + 10 }}
+              />
+            )
+          case 'Pokedex':
+            return (
+              <Image
+                source={Images.pokeball}
+                style={{ width: iconSize + 10, height: iconSize + 10 }}
+              />
+            )
+          default:
+            break
+        }
+      },
+      tabBarActiveTintColor: 'dodgerblue',
+      tabBarInactiveTintColor: 'gray'
+    })}
     >
       <TabNavigator.Screen name='Home' component={HomeScreen} />
       <TabNavigator.Screen
