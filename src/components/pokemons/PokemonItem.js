@@ -14,7 +14,7 @@ function PokemonItem ({ pokemon }) {
       >
         <View>
           <Text>{pokemon.name}</Text>
-          <PokemonImage id={pokemon.url.split('/')[6]} />
+          <PokemonImage id={pokemon.url.split('/')[6]} width={30} height={30} />
         </View>
       </TouchableOpacity>
     </View>

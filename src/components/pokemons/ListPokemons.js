@@ -11,6 +11,7 @@ function ListPokemons ({ pokemons }) {
     <FlatList
       data={pokemons}
       renderItem={renderItem}
+      numColumns={2}
       keyExtractor={item => item.url.split('/')[6]}
     />
   )
