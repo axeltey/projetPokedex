@@ -5,11 +5,11 @@ import { getPokemon } from '../../services/API'
 
 function PokemonScreen ({ route, navigation }) {
   const [pokemon, setPokemon] = useState()
-  const { name } = route.params
+  const { id } = route.params
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getPokemon(name)
+      const data = await getPokemon(id)
       setPokemon(data)
       navigation.setOptions({ title: data.name })
     }

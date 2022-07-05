@@ -102,7 +102,6 @@ const rehydrateAuth = async () => {
     } else {
       return null
     }
-    // = return persistedState && JSON.parse(persistedState)
   } catch (error) {
     console.error(error)
   }

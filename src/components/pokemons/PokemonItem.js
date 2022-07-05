@@ -12,12 +12,12 @@ function PokemonItem ({ pokemon }) {
     <View>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Pokemon', { name: pokemon.name })
+          navigation.navigate('Pokemon', { id: pokemon.url.split('/')[6] })
         }}
         style={Style.item}
       >
         <View style={Style.container}>
-          <Text style={Style.namePoke}>{pokemon.name}</Text>
+          <Text style={Style.namePoke}>{pokemon.name[0].toUpperCase()}{pokemon.name.slice(1)}</Text>
           <PokemonImage id={pokemon.url.split('/')[6]} width={windowH / 12} height={windowH / 12} />
         </View>
       </TouchableOpacity>
